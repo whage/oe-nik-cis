@@ -10,8 +10,8 @@ Goal: write the code that implements the force control for a soft-tissue gripper
 - learn about the hardware
 - set up development environment
 - find force control algorithm -> Control theory
-- writing C code for an embedded device
-- testing
+- write C code for an embedded device
+- test the results
 
 ---
 
@@ -31,7 +31,7 @@ Goal: write the code that implements the force control for a soft-tissue gripper
 
 # The controller
 - Espressif ESP32 microcontroller: a computer on an integrated circuit
-- dual-core with two Harvard Architecture CPUs
+- dual-core with two Harvard Architecture CPUs, up to 480Mhz, 32Kb cache each
 - 448 KB Internal ROM
 - 520 KB Internal SRAM
 
@@ -39,21 +39,20 @@ Goal: write the code that implements the force control for a soft-tissue gripper
 
 # Development environment
 - ESP-IDF (Espressif IoT Development Framework)
-- good [documentation](esp-docs)
+- [good documentation](esp-docs)
 
 ---
 
 # Force control
 
 - naive solutions
-- proportional (P) control
-- proportional–integral–derivative (PID) controllers
+- from proportional (P) to proportional–integral–derivative (PID) controllers
 - fuzzy 
 
 ---
 
 # Code
-The main program is already done, only the foce control implementation is missing:
+The main program is already done, only the force control implementation is missing:
 
 ```
 int ForceControl(
