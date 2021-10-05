@@ -17,4 +17,5 @@ docker run \
 https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf
 https://en.wikipedia.org/wiki/Bang%E2%80%93bang_control
 https://en.wikipedia.org/wiki/Proportional_control
+https://en.wikipedia.org/wiki/Setpoint_(control_system)
 https://en.wikipedia.org/wiki/PID_controller
