@@ -1,10 +1,10 @@
-# Force control of soft-tissue gripper based on strain-measurement
+### Force control of soft-tissue gripper based on strain-measurement
 
 Sallai András - 2021
 
 ---
 
-# The challenge - overview
+### The challenge - overview
 Goal: write the code that implements the force control for a soft-tissue gripper
 
 - learn about the hardware
@@ -15,21 +15,22 @@ Goal: write the code that implements the force control for a soft-tissue gripper
 
 ---
 
-# The device
+### The device
 
 ![Soft-tissue gripper](images/soft-tissue-gripper.png) <!-- .element height="35%" width="35%" -->
 
 ---
 
-# The device
+### The device
 
 - soft-tissue gripper
 - can be mounted on a robot arm
 - stepper motor controls the claws
+- software-based gripping force control
 
 ---
 
-# The controller
+### The controller
 - Espressif ESP32 microcontroller: a computer on an integrated circuit
 - dual-core with two Harvard Architecture CPUs, up to 480Mhz, 32Kb cache each
 - 448 KB Internal ROM
@@ -37,21 +38,13 @@ Goal: write the code that implements the force control for a soft-tissue gripper
 
 ---
 
-# Development environment
+### Development environment
 - ESP-IDF (Espressif IoT Development Framework)
-- [good documentation](esp-docs)
+- [good documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/index.html)
 
 ---
 
-# Force control
-
-- naive solutions
-- from proportional (P) to proportional–integral–derivative (PID) controllers
-- fuzzy 
-
----
-
-# Code
+### Code
 The main program is already done, only the force control implementation is missing:
 
 ```
@@ -68,7 +61,7 @@ int ForceControl(
 
 ---
 
-# The ForceControl function
+### The ForceControl function
 
 - `openPin`: active-low button for opening
 - `closePin`: active-low button for closing
@@ -78,4 +71,65 @@ int ForceControl(
 
 ---
 
-[esp-docs]: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/index.html
+### Control theory
+
+- the study of dynamical systems with inputs and how they respond to feedback
+- the objective is to get the system to a desired state
+- monitor the controlled "process variable"
+- compare it with "reference" or "set point": error
+- modify inputs as needed: feedback
+
+---
+
+### Elements of our model
+
+- input: stepper motor speed (angle of rotation?)
+- reference: a desired gripping force (to be decided)
+- error: difference between measured and desired force
+- controller's output: change in motor speed (angle of rotation?)
+
+---
+
+### Possible implementations
+
+- on-off / bang-bang
+- from proportional (P) to proportional–integral–derivative (PID) controllers
+- fuzzy 
+
+---
+
+### level 0: on-off / bang-bang controller
+
+- adjust motor speed by constant (+) or (-) value based on error
+- very simple to implement
+- will cause oscillation
+
+---
+
+### Proportional control (P)
+
+- correction is proportional to the difference between the desired value (setpoint, SP) and the measured value (process variable, PV)
+
+![P controller equation](images/p-equation.png)
+
+---
+
+### Proportional-integral-derivative (PID) control
+
+- correction based on proportional, integral and derivative terms
+
+![PID controller block diagram](images/pid-block.png)
+
+---
+
+### Fuzzy controller
+
+- TODO
+
+---
+
+### Development and testing
+
+- live testing only possible at the campus
+- "remote" development without the device
+- need test dataset for inputs (pins and sensors)
