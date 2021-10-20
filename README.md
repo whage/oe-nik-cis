@@ -19,3 +19,11 @@ https://en.wikipedia.org/wiki/Bang%E2%80%93bang_control
 https://en.wikipedia.org/wiki/Proportional_control
 https://en.wikipedia.org/wiki/Setpoint_(control_system)
 https://en.wikipedia.org/wiki/PID_controller
+
+# Megbeszélés Renivel - 2021.10.19.
+
+- PID szabályozót ajánl implmentálni
+- videokat érdemes megnézni róla
+- fuzzy irány izgalmas terület, érdemes megnézni
+- Kalman filter
+	- állapotokat tud megjósolni
