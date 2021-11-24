@@ -32,10 +32,10 @@ int ForceControl(PIDController *pid, bool openPin, bool closePin, long long_sens
     // so that we adjust the setpoint if just one of them is pressed at a time
     if (openPin != closePin) {
         if ( ! openPin) {
-            setpoint += PID_DESIRED_FORCE;
+            setpoint = PID_DESIRED_FORCE;
         }
         if ( ! closePin) {
-            setpoint -= 0;
+            setpoint = 0;
         }
     }
 
